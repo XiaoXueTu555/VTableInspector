@@ -3,7 +3,7 @@
 #
 
 # 将源代码添加到此项目的可执行文件。
-add_executable (VTableInspector "VTableInspector.cpp" "VTableInspector.h")
+add_executable (VTableInspector "test.cpp" "VTableInspector.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET VTableInspector PROPERTY CXX_STANDARD 20)
