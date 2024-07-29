@@ -11,8 +11,13 @@
 ## Prerequisites
 
 - C++11 or later.
-- A C++ compiler that supports `long` and `void*` types with the same size (32-bit or 64-bit).
-
+- For classes containing virtual functions, the vtable pointer contained
+    in the class should be at the beginning of the memory layout.
+- The storage order of members in the memory layout should be consistent
+    with the declaration order in the class.
+- Each virtual function table must end with a null pointer (nullptr).
+- The size of the long type must be consistent with the size of the void*
+    type (in 32-bit or 64-bit).
 ## Usage
 
 ### 1. Add the Header File
@@ -21,7 +26,7 @@ Include the `VTableInspector.h` header file in your project. Ensure that it is a
 
 ### 2. Insert ID in Your Class
 
-To enable inspection, you need to insert an `ID` member in your class and initialize it. Use the following macros:
+To enable inspection, you need to insert an `ID` member into all the classes in your class's inheritance diagram and initialize it. Use the following macros:
 
 ```cpp
 #include "VTableInspector.h"
