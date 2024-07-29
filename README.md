@@ -76,6 +76,8 @@ Warning: This function also relies on `printf`. Ensure `#define PRINT_RUN` is en
 ## Building the Project
 This project is built using `cmake`
 
+Or you can just reference `VTableInspector.h` directly in your project, and that's all there is to do
+
 ## License
 This project is licensed under the **MIT** License. See the `LICENSE` file for details.
 
