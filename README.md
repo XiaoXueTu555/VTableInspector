@@ -1,7 +1,7 @@
 # VTableInspector
 
-**VTableInspector** is a C++ library designed to inspect and print the virtual function tables (vtables) and memory layout of objects. This library is useful for debugging, introspection, security validation, and educational purposes.
-
+**VTableInspector** is a library for probing and printing the virtual functiontables (vtable) and memory layout of objects in C++. 
+This library is suitablefor cross-platform debugging, program introspection, security verification,and educational and research scenarios.
 ## Features
 
 - Inspect and print virtual function tables (vtables) of C++ classes.
