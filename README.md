@@ -48,3 +48,36 @@ public:
     INSERT_ID_MEMBER
     Derived() : Base(), ID_Init {}
 };
+```
+
+### 3.Print Virtual Function Tables
+Use the `PrintClassAll_VFTABLE` function to print the vtables and memory layout of an object:
+
+```cpp
+int main()
+{
+    Derived d;
+    PrintClassAll_VFTABLE(&d);
+    return 0;
+}
+
+```
+
+## Notes
+**VFPTRS& get_VFTABLE(T\* ptr)** : Retrieves the virtual function table pointers for the object.  
+Warning: Ensure that the object’s virtual function tables are properly set up. The function relies on specific assumptions about the compiler and memory layout.  
+
+**void PrintVFTable(const VFPTR& vftable)**: Prints the details of a single vtable.  
+Warning: This function depends on the printf function. If `printf` is not available or `#define PRINT_RUN` is removed, this function will not print any information.  
+
+**void PrintClassAll_VFTABLE(T\* p)**: Prints all vtables associated with the given object.  
+Warning: This function also relies on `printf`. Ensure `#define PRINT_RUN` is enabled or printf is available in your environment.  
+
+## Building the Project
+This project is built using `cmake`
+
+## License
+This project is licensed under the **MIT** License. See the `LICENSE` file for details.
+
+## Contact
+For any questions or issues, please open an issue on the GitHub repository.
