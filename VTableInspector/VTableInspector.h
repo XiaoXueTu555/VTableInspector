@@ -85,9 +85,9 @@ int main()
 #define PRINT_RUN
 
 #ifdef PRINT_RUN
-#include <stdio.h>
+    #include <stdio.h>
 #else
-void printf(const char* a, ...) {}
+v   oid printf(const char* a, ...) {}
 #endif // PRINT_RUN
 
 /* Check if the compiler supports nullptr */
@@ -193,9 +193,9 @@ VFPTRS& get_VFTABLE(T* ptr)
     // Initialization
     vftables.Init(MAXSIZE);
 
-    while (1)
+    while (base_address < ptr->id.sizeofclass)
     {
-        // Read 8 bytes of data from this segment
+        // Read 4(32-bit) or 8(64-bit) bytes of data from this segment
         long data = reinterpret_PTR_AS_LL(offset);
 
         // Check if it is placeholder data
@@ -208,14 +208,14 @@ VFPTRS& get_VFTABLE(T* ptr)
             continue;
         }
 
-        // This segment of data is ID
+        // This segment of data is ID::sizeofclass
         data = reinterpret_PTR_AS_LL(offset + sizeof(ID::placeholder_id));
 
         // Mark that all vtables have been read
         if (data == ptr->id.sizeofclass) break;
 
         // Mark that the data of a certain class has been read
-        if (data == offset + sizeof(ID) - base_address)
+        if (data == offset - base_address + sizeof(ID))
         {
             base_address += data;
             offset = base_address;
